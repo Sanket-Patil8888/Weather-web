@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AgriWeather — Redesigned UI Preview</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo-glow" aria-hidden></div>
+        <div>
+          <div class="brand-name">AgriWeather</div>
+          <div class="brand-sub">Command Center</div>
+        </div>
+      </div>
+
+      <div class="search-wrap">
+        <form id="searchForm" class="search" autocomplete="off">
+          <input id="searchInput" class="search-input" placeholder="Search city or ZIP" />
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <div class="actions">
+          <button id="locBtn" class="btn btn-ghost">Use GPS</button>
+          <button id="glassToggle" class="btn btn-ghost">Glass</button>
+        </div>
+      </div>
+    </header>
+
+    <section id="hero" class="hero shimmer-theme">
+      <div class="hero-left">
+        <div id="tempCard" class="temp-card card">
+          <div class="temp-left">
+            <div id="bigIcon" class="weather-icon sun"></div>
+            <div class="temp-value">
+              <div id="tempVal" class="temp">--°C</div>
+              <div id="condText" class="cond">Loading...</div>
+            </div>
+          </div>
+          <div class="temp-right">
+            <div class="meta"><strong id="city">Mumbai</strong></div>
+            <div class="meta small">Updated <span id="updated">--:--</span></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-card card">
+            <div class="info-title">Humidity</div>
+            <div id="humidity" class="info-value">-- %</div>
+          </div>
+          <div class="info-card card">
+            <div class="info-title">Wind</div>
+            <div id="wind" class="info-value">-- km/h</div>
+          </div>
+          <div class="info-card card">
+            <div class="info-title">Sunrise</div>
+            <div id="sunrise" class="info-value">--:--</div>
+          </div>
+          <div class="info-card card">
+            <div class="info-title">Sunset</div>
+            <div id="sunset" class="info-value">--:--</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="forecast card">
+          <div class="forecast-title">Hourly</div>
+          <div id="hourly" class="hourly-list"></div>
+        </div>
+
+        <div class="aqi card">
+          <div class="aqi-title">Air Quality</div>
+          <div id="aqiVal" class="aqi-value">--</div>
+          <div id="aqiText" class="aqi-text">Loading...</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="week card full-width">
+      <div class="week-title">7-Day Forecast</div>
+      <div id="weekList" class="week-list"></div>
+    </section>
+
+    <div class="footer-note">Redesign preview — static demo. Use the search to simulate.</div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

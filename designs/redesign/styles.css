@@ -1,0 +1,123 @@
+/* Modern minimal weather UI — Gradient + card layout + subtle glass/pulse
+   Designed to be responsive, animated, and easy to adapt into React components
+*/
+
+:root{
+  --bg-1: #0f1724; /* deep night */
+  --bg-2: #04213f; /* deep blue */
+  --card: rgba(255,255,255,0.04);
+  --card-strong: rgba(255,255,255,0.06);
+  --glass: rgba(255,255,255,0.06);
+  --accent: #7dd3ff;
+  --muted: rgba(255,255,255,0.65);
+  --glass-border: rgba(255,255,255,0.08);
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,'Helvetica Neue',Arial;
+  background: linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 70%);
+  color:#fff; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+
+.app{max-width:1200px;margin:28px auto;padding:18px;}
+
+/* Topbar */
+.topbar{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:18px}
+.brand{display:flex;gap:12px;align-items:center}
+.brand-name{font-weight:700;font-size:1.25rem}
+.brand-sub{font-size:0.8rem;color:var(--muted)}
+.logo-glow{width:48px;height:48px;border-radius:12px;background:radial-gradient(circle at 30% 30%, #fff7c0 0%, var(--accent) 40%, #2b8be0 100%);box-shadow:0 8px 28px rgba(45,130,255,0.12);}
+
+/* Search */
+.search-wrap{display:flex;gap:12px;align-items:center}
+.search{display:flex;gap:8px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:8px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);align-items:center}
+.search-input{background:transparent;border:0;padding:10px 12px;border-radius:8px;color:inherit;outline:none;min-width:220px}
+.btn{padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;cursor:pointer}
+.btn-primary{background:linear-gradient(180deg,var(--accent),#4ba6ff);color:#06203a;font-weight:700;border:none}
+.btn-ghost{background:transparent}
+.actions{display:flex;gap:8px}
+
+/* Hero: left/right */
+.hero{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:18px}
+.hero .card{padding:14px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 6px 20px rgba(2,6,23,0.6);}
+
+@media(min-width:960px){
+  .hero{grid-template-columns:3fr 1.5fr;align-items:start}
+}
+
+/* Temp card */
+.temp-card{display:flex;align-items:center;justify-content:space-between;padding:18px}
+.temp-left{display:flex;gap:16px;align-items:center}
+.weather-icon{width:96px;height:96px;border-radius:16px;background:linear-gradient(180deg,#fff8c4,#ffc66d);box-shadow:0 10px 40px rgba(255,180,40,0.12);flex:0 0 96px;display:flex;align-items:center;justify-content:center}
+.weather-icon.sun{background:radial-gradient(circle at 30% 30%, #fff6c2, #ffd54a 40%, #ffb347 70%);} 
+.weather-icon.rain{background:linear-gradient(180deg,#cfefff,#7fbfff);}
+.temp{font-size:2.6rem;font-weight:700}
+.cond{color:var(--muted);font-weight:600}
+.temp-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.meta{color:var(--muted)}
+
+/* Info row */
+.info-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+@media(min-width:720px){.info-row{grid-template-columns:repeat(4,1fr)}}
+.info-card{padding:12px;text-align:center}
+.info-title{font-size:0.85rem;color:var(--muted)}
+.info-value{font-weight:700;font-size:1.1rem}
+
+/* Right column */
+.forecast{margin-bottom:12px}
+.forecast-title{font-weight:700;margin-bottom:8px}
+.hourly-list{display:flex;gap:10px;overflow:auto;padding:6px}
+.hour-item{min-width:72px;padding:8px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));text-align:center}
+.hour-item .h-time{font-size:0.9rem;color:var(--muted)}
+.hour-item .h-temp{font-weight:700;margin-top:6px}
+
+.aqi{padding:14px;text-align:center}
+.aqi-value{font-size:2rem;font-weight:800}
+.aqi-text{color:var(--muted)}
+
+/* Week forecast */
+.week{padding:12px;margin-bottom:16px}
+.week-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:720px){.week-list{grid-template-columns:repeat(7,1fr)}}
+.day-card{padding:12px;text-align:center;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));}
+.day-card .d-day{font-weight:700}
+.day-card .d-temp{margin-top:6px;color:var(--muted)}
+
+/* Footer note */
+.footer-note{color:var(--muted);font-size:0.85rem;margin-top:10px;text-align:center}
+
+/* Animations & skeleton */
+.shimmer-theme{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));}
+.skeleton{background:linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 75%);background-size:200% 100%;animation: shimmer 1.2s linear infinite}
+@keyframes shimmer{0%{background-position:-100% 0}100%{background-position:100% 0}}
+.card{transition:transform 200ms ease, box-shadow 200ms ease}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(5,15,40,0.6)}
+.btn:hover{transform:translateY(-3px)}
+.brand-name, .brand-sub, .brand{transition:transform 250ms ease}
+
+/* glass toggle */
+.glass .card{background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));backdrop-filter: blur(8px);border:1px solid var(--glass-border)}
+
+/* small screens */
+@media(max-width:520px){
+  .app{padding:12px;margin:8px}
+  .weather-icon{width:78px;height:78px}
+  .temp{font-size:2rem}
+  .search-input{min-width:120px}
+}
+
+/* helper full-width */
+.full-width{width:100%}
+
+/* subtle animated background effect (clouds/sun glow) - decorative */
+.bg-decor{position:fixed;inset:0;pointer-events:none;opacity:0.06}
+
+/* Accessible focus styles */
+:focus{outline:none}
+.search-input:focus{box-shadow:0 6px 18px rgba(50,120,255,0.12);border-radius:10px}
+
+/* small utility */
+.small{font-size:0.85rem;color:var(--muted)}
